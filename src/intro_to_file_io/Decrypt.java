@@ -5,34 +5,24 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
 
-public class Encrypt {
-	
+public class Decrypt {
 public static void main(String[] args) {
 	Scanner scan = null;
-	PrintWriter pw = null;
-	File file = new File("/Users/league/Desktop/Encrypt.txt");
-
-	String reverse =JOptionPane.showInputDialog("Give me an encrypted message");
-	
+	File file;
+	//JFileChooser jf = new JFileChooser();
+	//file = jf.getSelectedFile();
+	file = new File("/Users/league/Desktop/Encrypt.txt") ;
 	try {
 		scan = new Scanner(file);
-		pw = new PrintWriter(file);
-		pw.println(reverseStr(reverse));
-		pw.close();
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	while(scan.hasNextLine()) {
-		System.out.println(scan.nextLine());
-	}
-	
-	
+	System.out.println(reverseStr(scan.nextLine()));
 	
 }
-
 public static String reverseStr(String a) {
 	String b = "";
 	for (int i = a.length()-1; i > -1; i--) {
