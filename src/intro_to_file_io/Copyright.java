@@ -8,8 +8,9 @@ import java.util.Scanner;
 public class Copyright {
 public static void main(String[] args) {
 	Scanner scan;
+	String files = "/Users/league/Desktop/ /src/intro_to_file_io/Encrypt";
 	PrintWriter pw = null;
-	File file = new File("/Users/league/Desktop/Encrypt.txt");
+	File file = new File(files);
 	try {
 		scan = new Scanner(file);
 		pw = new PrintWriter(file);
@@ -18,6 +19,7 @@ public static void main(String[] args) {
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+
 	}
 	
 }

@@ -12,7 +12,7 @@ public class Encrypt {
 public static void main(String[] args) {
 	Scanner scan = null;
 	PrintWriter pw = null;
-	File file = new File("/Users/league/Desktop/Encrypt.txt");
+	File file = new File("/Users/league/Desktop/ /src/intro_to_file_io/Encrypt");
 
 	String reverse =JOptionPane.showInputDialog("Give me an encrypted message");
 	
@@ -20,7 +20,9 @@ public static void main(String[] args) {
 		scan = new Scanner(file);
 		pw = new PrintWriter(file);
 		pw.println(reverseStr(reverse));
+		pw.println("// Copyright © 2017 by Shiva");
 		pw.close();
+		
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
