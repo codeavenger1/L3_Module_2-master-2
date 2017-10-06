@@ -3,8 +3,10 @@ package intro_to_file_io;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,10 +22,11 @@ public class ToDo implements ActionListener {
 	String task;
 	String removet;
 	ToDo todo;
+	String scans = "";
 	ArrayList<String> list = new ArrayList<String>();
 	File file = new File("/Users/league/Desktop/ /src/intro_to_file_io/test.txt");
 	FileWriter fw;
-
+	Scanner scan;
 	public static void main(String[] args) {
 		ToDo todo = new ToDo();
 		todo.main2();
@@ -67,7 +70,7 @@ public class ToDo implements ActionListener {
 			list.add(task + "\n");
 			System.out.println(task);
 		}
-		if (e.getSource() == load) {
+		if (e.getSource() == save) {
 			try {
 				fw = new FileWriter("src/intro_to_file_io/ToDo", true);
 				for (int i = 0; i < list.size(); i++) {
@@ -78,11 +81,27 @@ public class ToDo implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
+		if(e.getSource() == load) {
+			
+			try {
+				scan = new Scanner(new File ("src/intro_to_file_io/ToDo"));
+				while(scan.hasNextLine()) {
+				//System.out.println(scans = scan.nextLine());
+				
+				scans += scan.nextLine();
+				scans += "\n";
+		}
+			JOptionPane.showMessageDialog(null, scans);           
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
 		if (e.getSource() == remove) {
-			// String name = JOptionPane.showInputDialog("What is your name?");
-			removet = JOptionPane.showInputDialog("What is the task you want to remove?");
+			removet = JOptionPane.showInputDialog("What is the task you want to remove?\n");
 			if (list.contains(removet)) {
-				list.remove(removet.equals(" "));
+				list.remove(removet);
 			}
 
 		}
