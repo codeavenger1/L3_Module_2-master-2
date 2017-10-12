@@ -82,15 +82,21 @@ public class ToDo implements ActionListener {
 			}
 		}
 		if(e.getSource() == load) {
-			
+			list.clear();
 			try {
 				scan = new Scanner(new File ("src/intro_to_file_io/ToDo"));
 				while(scan.hasNextLine()) {
 				//System.out.println(scans = scan.nextLine());
 				
-				scans += scan.nextLine();
-				scans += "\n";
+				
+				list.add(scan.nextLine()+ "\n");
+				
+				
 		}
+				for (String x : list) {
+					scans+=x;
+				
+				}
 			JOptionPane.showMessageDialog(null, scans);           
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -100,10 +106,25 @@ public class ToDo implements ActionListener {
 		}
 		if (e.getSource() == remove) {
 			removet = JOptionPane.showInputDialog("What is the task you want to remove?\n");
-			if (list.contains(removet)) {
-				list.remove(removet);
+			for(int i = 0; i < list.size(); i++) {
+				if (list.get(i).equals(removet+"\n")) {
+					list.remove(i);
+				}
+				
 			}
-
+			try {
+				fw = new FileWriter("src/intro_to_file_io/ToDo", false);
+				for (int i = 0; i < list.size(); i++) {
+					fw.write(list.get(i));
+				}
+				fw.close();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+			for (String x : list) {
+				System.out.println(x);
+			}
 		}
 	}
-}
+
